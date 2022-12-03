@@ -1,0 +1,49 @@
+.navbar {
+  height: 50px;
+  border-bottom: 1px solid rgb(230, 227, 227);
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  .wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .search {
+      display: flex;
+      align-items: center;
+      border: 0.5px solid lightgray;
+      //doing this so can remove input box border
+      //to make input box and search icon appear as 1
+      padding: 3px;
+      input {
+        border: none;
+        outline: none;
+        //removes outline when you click input box
+        &::placeholder {
+          font-size: 12px;
+        }
+      }
+    }
+    .items {
+      display: flex;
+      align-items: center;
+      .item {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        .icon {
+          font-size: 20px;
+        }
+        .avatar {
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
