@@ -1,8 +1,8 @@
 import React from "react";
 import "./home.scss";
-import Sidebar from "../components/sidebar/Sidebar";
-import Navbar from "../components/navbar/Navbar";
-import Form from "../components/form/Form";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
+import Form from "../../components/form/Form";
 
 const Home = () => {
   return (

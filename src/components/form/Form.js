@@ -1,5 +1,7 @@
 import React from "react";
 import "./form.scss";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+
 function Form() {
   return (
     <div className="form">
@@ -17,6 +19,15 @@ function Form() {
         </div>
         <div className="right">
           <form>
+            <div class="formInput">
+              <label for="file" id="imageSelector">
+                Select Image
+                <AddPhotoAlternateIcon color="primary" className="icon" />
+              </label>
+              <input type="file" id="file" style={{ display: "none" }}></input>
+              {/* binding icon (inside label tag) to file input button
+              to make it look pro */}
+            </div>
             <div class="formInput">
               <label>Full Name</label>
               <br />
@@ -48,24 +59,26 @@ function Form() {
               <textarea
                 type="text"
                 placeholder="It was a good meeting..."
+                rows="5"
               ></textarea>
             </div>
             <div class="formInput">
               <label>Rating (between 1 and 10): </label>
               <br />
-              <input type="range" min="0" max="10"></input>
+              <input type="range" id="rating" min="0" max="10"></input>
+              {/* NEED to display slider value! */}
             </div>
             <div class="formInput">
-              <label>Post Meeting Action </label>
+              <label for="action">Post Meeting Action</label>
               <br />
-              <input type="radio"></input>
-              <label>Engage Actively</label>
-              <br />
-              <input type="radio"></input>
-              <label>Engage Moderately</label>
-              <br />
-              <input type="radio"></input>
-              <label>Ignore</label>
+              <select id="action">
+                <option value="">Engage Actively</option>
+                <option value="">Engage Moderately</option>
+                <option value="">Ignore</option>
+              </select>
+            </div>
+            <div class="submitForm">
+              <button type="submit">Submit</button>
             </div>
           </form>
         </div>

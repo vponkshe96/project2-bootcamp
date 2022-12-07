@@ -8,8 +8,8 @@
     margin: 20px;
     display: flex;
     h1 {
-      font-size: 20px;
-      color: lightgray;
+      font-size: 16px;
+      color: #2196f3;
     }
     .left {
       flex: 1;
@@ -27,9 +27,46 @@
       flex: 2;
       .formInput {
         margin: 5px;
-        //can't style label elements
-        input {
-          margin-bottom: 20px;
+        label {
+          font-size: 14px;
+          font-weight: bold;
+          color: #2196f3;
+          //can't change label margin here
+        }
+        input[type="text"],
+        input[type="range"],
+        textArea,
+        select {
+          width: 95%;
+          margin-top: 5px;
+          margin-bottom: 15px;
+          resize: none;
+          //only relevant to textArea
+        }
+      }
+      #imageSelector {
+        display: flex;
+        align-items: center;
+      }
+      .submitForm {
+        width: 85%;
+        height: 100px;
+        margin-top: 15px;
+        //no need to use flexbox, same scenario as line 17
+        text-align: center;
+        button {
+          background-color: white;
+          font-weight: bold;
+          font-size: 16px;
+          color: #2196f3;
+          width: 150px;
+          height: 30px;
+          border: solid 2px #2196f3;
+          border-radius: 5px;
+          &:hover {
+            background-color: #2196f3;
+            color: white;
+          }
         }
       }
     }

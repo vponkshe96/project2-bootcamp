@@ -1,5 +1,6 @@
 import React from "react";
 import "./sidebar.scss";
+import { Link } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import GroupsIcon from "@mui/icons-material/Groups";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -16,13 +17,17 @@ function Sidebar() {
         <ul>
           <p className="title">MAIN</p>
           <li>
-            <DashboardIcon className="icon" />
+            <Link to="/">
+              <DashboardIcon className="icon" />
+            </Link>
             <span className="text">Dashboard</span>
           </li>
           <br />
           <p className="title">LISTS</p>
           <li>
-            <GroupsIcon className="icon" />
+            <Link to="/meetinglog">
+              <GroupsIcon className="icon" />
+            </Link>
             <span className="text">Meeting Log</span>
           </li>
           <br />

@@ -1,25 +1,27 @@
 .sidebar {
   flex: 1;
   min-height: 100vh;
-  border-right: 1px solid rgb(230, 227, 227);
+  border-right: 1px solid rgb(231, 228, 228);
+  background-color: white;
   //affects height of home container too coz of flexbox
   //might need to add bgcolor later when implementing dark mode
   .top {
     height: 50px;
     display: flex;
     align-items: center;
+    background-color: #2196f3;
     //centers logo child vertically
     justify-content: center;
     //centers logo child horizontally
     //pay attention to syntax of 9 and 11
     .logo {
-      color: rgb(0, 106, 255);
+      color: white;
       font-weight: bold;
       font-size: 20px;
     }
   }
   hr {
-    border: 0.5px solid rgb(230, 227, 227);
+    border: 0.5px solid #2196f3;
     margin-bottom: 8px;
   }
   .rest {
@@ -31,10 +33,10 @@
       //reset ul's margin and padding
       //only padding is line 26's for entire center div
       .title {
-        color: #888;
+        color: #2196f3;
         font-size: 10px;
         font-weight: bold;
-        margin-top: 20px;
+        margin-top: 35px;
         margin-bottom: 5px;
       }
       li {
@@ -43,35 +45,15 @@
         align-items: center;
         padding: 5px;
         margin-bottom: 40px;
-        cursor: pointer;
-        & :hover {
-          background-color: rgb(218, 240, 249);
-        }
-        //45,46 not working as intended
         .icon {
           font-size: 18px;
-          color: rgb(0, 106, 255);
+          color: #2196f3;
         }
         .text {
           font-size: 13px;
-          color: #888;
+          color: #999;
           margin-left: 10px;
         }
-        //No Need for now, revisit later
-        // .lightMode {
-        //   width: 20px;
-        //   height: 20px;
-        //   border-radius: 5px;
-        //   border: 1px solid rgb(0, 106, 255);
-        //   background-color: white;
-        // }
-        // .darkMode {
-        //   width: 20px;
-        //   height: 20px;
-        //   border-radius: 5px;
-        //   border: 1px solid rgb(0, 106, 255);
-        //   background-color: #333;
-        // }
       }
     }
   }
