@@ -2,6 +2,7 @@ import React from "react";
 import "./meetinglog.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
+import Datatable from "../../components/datatable/Databtable";
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
       <Sidebar />
       <div className="meetingLogContainer">
         <Navbar />
-        Meeting Log Page
+        <Datatable />
       </div>
     </div>
   );
