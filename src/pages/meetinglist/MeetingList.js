@@ -1,15 +1,15 @@
 import React from "react";
-import "./meetinglog.scss";
+import "./meetinglist.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Datatable from "../../components/datatable/Databtable";
 
-const Home = () => {
+const MeetingList = () => {
   return (
     //parent div with children
-    <div className="meetingLog">
+    <div className="meetingList">
       <Sidebar />
-      <div className="meetingLogContainer">
+      <div className="meetingListContainer">
         <Navbar />
         <Datatable />
       </div>
@@ -17,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MeetingList;

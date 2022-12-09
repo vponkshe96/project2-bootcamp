@@ -5,65 +5,57 @@ import { db } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
 function Datatable() {
-  // const [meeting, setMeeting] = useState({
-  //   fullName: "",
-  //   tag: "",
-  //   meetingDate: "",
-  //   location: "",
-  //   purpose: "",
-  //   meetingNotes: "",
-  //   // rating: "",
-  //   // postMeetingAction: " ",
-  // });
-
   const [meetings, setMeetings] = useState([]);
-  //hold list of meetings from our db
-  const meetingLogCollectionRef = collection(db, "meetingLog");
+  //initialized as empty array to match MUI table rows datatype
+
+  const meetingCollection = collection(db, "meetings");
+  //provides reference to meeting list stored in fb
 
   useEffect(() => {
     const getMeetings = async () => {
-      const data = await getDocs(meetingLogCollectionRef);
+      const data = await getDocs(meetingCollection);
+      //fetches our list of meetings from collection
+      //returns a promise
       setMeetings(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log(meetings);
+      //special function provided by fb
+      //play around with it
+      //setting state with our data
     };
+    //can't make anonymous function async so doing that to 24
     getMeetings();
+    //calling our function
   }, []);
-  //play around with this later
   //grabbing our data from db
 
   const columns = [
     {
       field: "fullName",
       headerName: "Full Name",
-      description: "This column has a value getter and is not sortable.",
       sortable: false,
       width: 130,
-      valueGetter: (params) => `${params.row.fullName}`,
     },
     {
       field: "tag",
       headerName: "Tag",
-      width: 100,
+      width: 130,
     },
     {
       field: "meetingDate",
       headerName: "Date",
-      width: 120,
+      width: 130,
     },
     {
-      field: "location",
-      headerName: "Location",
-      width: 100,
-    },
-    {
-      field: "purpose",
-      headerName: "Purpose",
-      width: 100,
-    },
-    {
-      field: "meetingNotes",
-      headerName: "Meeting Notes",
-      width: 225,
+      field: "status",
+      headerName: "Status",
+      width: 80,
+      renderCell: (params) => {
+        return (
+          <div className={`statusCell ${params.row.status}`}>
+            {/* class name will depend on action */}
+            {params.row.status}
+          </div>
+        );
+      },
     },
   ];
 
@@ -75,15 +67,15 @@ function Datatable() {
         <h1>View Meeting Records</h1>
       </div>
       <div className="bottom">
-        <div style={{ height: 600, width: "100%" }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={9}
-            rowsPerPageOptions={[9]}
-            checkboxSelection
-          />
-        </div>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+          getRowHeight={() => "auto"}
+          className="table"
+        />
       </div>
     </div>
   );

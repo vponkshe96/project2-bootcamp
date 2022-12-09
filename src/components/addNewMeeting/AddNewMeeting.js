@@ -1,12 +1,13 @@
 import { React, useState } from "react";
-import "./form.scss";
+import "./addNewMeeting.scss";
 import { db } from "../../firebaseConfig";
 import { collection, addDoc } from "@firebase/firestore";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 
-function Form() {
-  const meetingLogCollectionRef = collection(db, "meetingLog");
+const AddNewMeeting = () => {
+  const meetingCollection = collection(db, "meetings");
   //establishes connection b/w app and meeting log collection (table) in firebase db
+
   const [newMeeting, setNewMeeting] = useState({
     fullName: "",
     tag: "",
@@ -14,24 +15,30 @@ function Form() {
     location: "",
     purpose: "",
     meetingNotes: "",
-    // rating: "",
-    // postMeetingAction: " ",
+    rating: 10,
+    status: "Active",
   });
-  // useState Hook
-  // meeting is an empty object which will be populated when user fills form
-  // On submit will be sent to firebase DB
+
+  //newMeeting is initialized with empty values, filled as users completes form
+  //upon form submission -> sent to Firebase DB
 
   const createUser = async () => {
-    await addDoc(meetingLogCollectionRef, newMeeting);
+    await addDoc(meetingCollection, newMeeting);
+    //telling firestore db to add our form submitted data to our meeting collection
+    //doc is like a new row/entry added to table
   };
+  //using async await syntax, cleaner way of handling promises
+  //it is asynchronous as I'm making a request to firestore db
 
   //Form Event Handlers
   const handleChange = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
     setNewMeeting({ ...newMeeting, [fieldName]: fieldValue });
-    //copy value of contact and override a particular key's value
+    //copy value of newMeeting and override a field's value
+    //merging and updating state
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     //prevents page from refreshing after submitting
@@ -134,21 +141,27 @@ function Form() {
                 onChange={handleChange}
               ></textarea>
             </div>
-            {/* <div className="formInput">
+            <div className="formInput">
               <label>Rating (between 1 and 10): </label>
               <br />
-              <input type="range" id="rating" min="0" max="10" onChange={{ handleChange }}></input>
+              <input
+                type="range"
+                name="rating"
+                min="0"
+                max="10"
+                onChange={handleChange}
+              ></input>
               {/* NEED to display slider value! */}
-            {/* </div>
+            </div>
             <div className="formInput">
-              <label for="action">Post Meeting Action</label>
+              <label htmlFor="status">Status</label>
               <br />
-              <select id="action">
-                <option value="">Engage Actively</option>
-                <option value="">Engage Moderately</option>
-                <option value="">Ignore</option>
+              <select name="status" onChange={handleChange}>
+                <option value="Active">Active</option>
+                <option value="Maintain">Maintain</option>
+                <option value="Ignore">Ignore</option>
               </select>
-            </div> */}
+            </div>
             <div className="submitForm">
               <button type="submit">Submit</button>
             </div>
@@ -157,6 +170,6 @@ function Form() {
       </div>
     </div>
   );
-}
+};
 
-export default Form;
+export default AddNewMeeting;

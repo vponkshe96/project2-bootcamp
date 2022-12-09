@@ -25,10 +25,10 @@ function Sidebar() {
           <br />
           <p className="title">LISTS</p>
           <li>
-            <Link to="/meetinglog">
+            <Link to="/meetinglist">
               <GroupsIcon className="icon" />
             </Link>
-            <span className="text">Meeting Log</span>
+            <span className="text">Meeting List</span>
           </li>
           <br />
           <p className="title">USER</p>
