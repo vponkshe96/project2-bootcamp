@@ -6,7 +6,14 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+
 function Sidebar() {
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -17,7 +24,7 @@ function Sidebar() {
         <ul>
           <p className="title">MAIN</p>
           <li>
-            <Link to="/">
+            <Link to="/Home">
               <DashboardIcon className="icon" />
             </Link>
             <span className="text">Dashboard</span>
@@ -41,7 +48,9 @@ function Sidebar() {
             <span className="text">Settings</span>
           </li>
           <li>
-            <LogoutIcon className="icon" />
+            <Link to="/">
+              <LogoutIcon className="icon" onClick={handleLogout} />
+            </Link>
             <span className="text">Logout</span>
           </li>
           <br />
