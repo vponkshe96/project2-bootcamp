@@ -1,0 +1,50 @@
+.dataTableContainer {
+  .top,
+  .bottom {
+    padding: 10px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    //adding box shadow
+    margin: 20px;
+    display: flex;
+    h1 {
+      font-size: 16px;
+      color: #2196f3;
+    }
+    .datatable {
+      height: 80vh;
+      width: "100%";
+      font-size: 16px;
+      .statusCell {
+        padding: 5px;
+        border-radius: 5px;
+
+        &.Active {
+          background-color: rgba(0, 128, 0, 0.05);
+          color: green;
+        }
+        &.Maintain {
+          background-color: rgba(255, 217, 0, 0.05);
+          color: goldenrod;
+        }
+        &.Ignore {
+          background-color: rgba(255, 0, 0, 0.05);
+          color: crimson;
+        }
+      }
+      .cellAction {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .deleteButton {
+        padding: 2px 5px;
+        border-radius: 5px;
+        background-color: crimson;
+        color: white;
+        border: 1px solid crimson;
+        cursor: pointer;
+      }
+    }
+  }
+}
