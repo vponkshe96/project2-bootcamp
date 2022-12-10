@@ -51,7 +51,7 @@ const AddNewMeeting = () => {
     //alert user
   };
   return (
-    <div className="form">
+    <div className="addMeetingContainer">
       <div className="top">
         <h1>Add New Meeting</h1>
       </div>
@@ -65,7 +65,7 @@ const AddNewMeeting = () => {
           />
         </div>
         <div className="right">
-          <form onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
             <div className="formInput">
               <label htmlFor="file" id="imageSelector">
                 Select Image
