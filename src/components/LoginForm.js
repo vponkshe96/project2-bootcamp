@@ -6,16 +6,16 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-
+import { auth } from "../firebaseConfig";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LoginIcon from "@mui/icons-material/Login";
 import { Box } from "@mui/system";
-import { auth } from "../firebaseConfig";
 
 function LoginForm(props) {
   const [loginEmail, setLoginEmail] = React.useState("");
   const [loginPassword, setLoginPassword] = React.useState("");
   const navigate = useNavigate();
+  const [message, setMessage] = React.useState("");
 
   const handleRegister = async () => {
     try {
@@ -28,6 +28,7 @@ function LoginForm(props) {
       navigate("/Home");
     } catch (error) {
       console.log(error.message);
+      setMessage(error.message);
     } finally {
       setLoginEmail("");
       setLoginPassword("");
@@ -45,6 +46,7 @@ function LoginForm(props) {
       navigate("/Home");
     } catch (error) {
       console.log(error.message);
+      setMessage(error.message);
     } finally {
       setLoginEmail("");
       setLoginPassword("");
@@ -124,6 +126,8 @@ function LoginForm(props) {
           >
             Register
           </Button>
+          <br />
+          <div>{message}</div>
         </Box>
       </form>
     </div>
